@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class MainTests extends BaseTest {
 
-    @Test
+    @Test(priority = 0)
     public void bottomMenuNavigation(){
 
         HomeScreen home = getHomeScreen();
@@ -27,6 +27,21 @@ public class MainTests extends BaseTest {
 
         DragScreen drag = swipe.tapDrag();
         Assert.assertTrue(drag.amIHere(), "Couldn't find an element in the Drag screen");
+
+    }
+
+    @Test(priority = 1)
+    public void successfulSignUp(){
+
+        HomeScreen home = getHomeScreen();
+        LoginScreen login = home.tapLogin();
+
+        SignUpScreen signUp = login.tapSignUp();
+        signUp.fillSignUp("test@test.com", "test123.");
+
+        Assert.assertTrue(signUp.wasSignUpSuccessful());
+
+        signUp.tapSignUpOkButton();
 
     }
 

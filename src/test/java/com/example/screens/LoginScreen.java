@@ -12,6 +12,11 @@ public class LoginScreen extends HomeScreen{
     @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"LOGIN\")")
     private WebElement loginButton;
 
+    @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"Sign up\")")
+    private WebElement signUpButton;
+
+
+
     public LoginScreen(AndroidDriver driver) {
         super(driver);
     }
@@ -21,5 +26,13 @@ public class LoginScreen extends HomeScreen{
         return isElementHere(title) && isElementHere(loginButton);
 
     }
+
+    public SignUpScreen tapSignUp(){
+        waitForItem(signUpButton);
+        signUpButton.click();
+        return new SignUpScreen(getDriver());
+    }
+
+
 
 }
