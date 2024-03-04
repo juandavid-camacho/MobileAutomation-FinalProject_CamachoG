@@ -7,6 +7,12 @@ import org.openqa.selenium.WebElement;
 
 public class HomeScreen extends BaseScreen {
 
+    @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"WEBDRIVER\")")
+    private WebElement title;
+
+    @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"Support\")")
+    private WebElement supportButton;
+
     @AndroidFindBy(accessibility = "Webview")
     private WebElement webViewButton;
 
@@ -26,29 +32,40 @@ public class HomeScreen extends BaseScreen {
         super(driver);
     }
 
-    public void tapWebview(){
+    public WebViewScreen tapWebview(){
         waitForItem(webViewButton);
         webViewButton.click();
+        return new WebViewScreen(getDriver());
     }
 
-    public void tapLogin(){
+    public LoginScreen tapLogin(){
         waitForItem(loginButton);
         loginButton.click();
+        return new LoginScreen(getDriver());
     }
 
-    public void tapForms(){
+    public FormsScreen tapForms(){
         waitForItem(formsButton);
         formsButton.click();
+        return new FormsScreen(getDriver());
     }
 
-    public void tapSwipe(){
+    public SwipeScreen tapSwipe(){
         waitForItem(swipeButton);
         swipeButton.click();
+        return new SwipeScreen(getDriver());
     }
 
-    public void tapDrag(){
+    public DragScreen tapDrag(){
         waitForItem(dragButton);
         dragButton.click();
+        return new DragScreen(getDriver());
+    }
+
+    public boolean amIHere(){
+
+        return isElementHere(title) && isElementHere(supportButton);
+
     }
 
 }

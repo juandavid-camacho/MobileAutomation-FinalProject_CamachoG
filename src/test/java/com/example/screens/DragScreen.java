@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class DragScreen extends HomeScreen{
 
-    @AndroidFindBy(uiAutomator = "Drag and Drop")
+    @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"Drag and Drop\")")
     private WebElement title;
 
     @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"drag-l2\"]/android.widget.ImageView")
@@ -16,12 +16,10 @@ public class DragScreen extends HomeScreen{
         super(driver);
     }
 
-    public Boolean isTitleHere(){
-        return title.isDisplayed();
-    }
+    public boolean amIHere(){
 
-    public Boolean isFirstTileHere(){
-        return firstTile.isDisplayed();
+        return isElementHere(title) && isElementHere(firstTile);
+
     }
 
 }

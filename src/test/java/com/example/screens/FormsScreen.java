@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class FormsScreen extends HomeScreen{
 
-    @AndroidFindBy(id = "RNE__Input__text-input")
+    @AndroidFindBy(accessibility = "text-input")
     private WebElement inputField;
 
     @AndroidFindBy(className = "android.widget.Switch")
@@ -16,12 +16,10 @@ public class FormsScreen extends HomeScreen{
         super(driver);
     }
 
-    public Boolean isInputFieldHere(){
-        return inputField.isDisplayed();
-    }
+    public boolean amIHere(){
 
-    public Boolean isTheSwitchHere(){
-        return theSwitch.isDisplayed();
+        return isElementHere(inputField) && isElementHere(theSwitch);
+
     }
 
 }

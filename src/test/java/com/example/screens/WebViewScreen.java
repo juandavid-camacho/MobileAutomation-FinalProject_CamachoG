@@ -16,12 +16,10 @@ public class WebViewScreen extends HomeScreen{
         super(driver);
     }
 
-    public Boolean isMainTextHere(){
-        return mainText.isDisplayed();
-    }
+    public boolean amIHere(){
 
-    public Boolean isGetStartedButtonHere(){
-        return getStartedButton.isDisplayed();
+        return isElementHere(mainText) && isElementHere(getStartedButton);
+
     }
 
 }

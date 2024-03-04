@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class LoginScreen extends HomeScreen{
 
-    @AndroidFindBy(accessibility = "Login / Sign up Form")
+    @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"Login / Sign up Form\")")
     private WebElement title;
 
     @AndroidFindBy(uiAutomator = "UiSelector().className(android.widget.TextView).text(\"LOGIN\")")
@@ -16,12 +16,10 @@ public class LoginScreen extends HomeScreen{
         super(driver);
     }
 
-    public Boolean isTitleHere(){
-        return title.isDisplayed();
-    }
+    public boolean amIHere(){
 
-    public Boolean isLoginButtonHere(){
-        return loginButton.isDisplayed();
+        return isElementHere(title) && isElementHere(loginButton);
+
     }
 
 }

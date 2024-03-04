@@ -19,7 +19,7 @@ public class BaseScreen {
 
         this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
     public AndroidDriver getDriver() {
@@ -29,4 +29,12 @@ public class BaseScreen {
     public static void waitForItem(WebElement item){
         wait.until(ExpectedConditions.visibilityOf(item));
     }
+
+    public boolean isElementHere(WebElement element){
+
+        waitForItem(element);
+        return element.isDisplayed();
+
+    }
+
 }
