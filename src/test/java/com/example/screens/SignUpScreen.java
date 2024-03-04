@@ -44,7 +44,7 @@ public class SignUpScreen extends LoginScreen{
 
     }
 
-    public boolean wasSignUpSuccessful(){
+    public boolean wasSuccessful(){
 
         return isElementHere(signUpAlertTitle) && isElementHere(signUpOkButton);
 
