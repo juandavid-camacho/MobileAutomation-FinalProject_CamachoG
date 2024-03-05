@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class MainTests extends BaseTest {
 
-    //@Test(priority = 0)
+    @Test(priority = 0)
     public void bottomMenuNavigation(){
 
         HomeScreen home = getHomeScreen();
@@ -31,7 +31,7 @@ public class MainTests extends BaseTest {
 
     }
 
-    //@Test(priority = 1)
+    @Test(priority = 1)
     public void successfulSignUp(){
 
         HomeScreen home = getHomeScreen();
@@ -44,7 +44,7 @@ public class MainTests extends BaseTest {
 
         signUp.fillSignUp(credentials[0], credentials[1]);
 
-        Assert.assertTrue(signUp.wasSuccessful());
+        Assert.assertTrue(signUp.wasSuccessful(), "Sign up was not successful");
 
         signUp.tapSignUpOkButton();
 
@@ -61,9 +61,29 @@ public class MainTests extends BaseTest {
 
         login.fillLogIn(credentials[0], credentials[1]);
 
-        Assert.assertTrue(login.wasSuccessful());
+        Assert.assertTrue(login.wasSuccessful(), "Login was not successful");
 
         login.tapOkButton();
+
+    }
+
+    @Test(priority = 3)
+    public void swipeCards(){
+
+        HomeScreen home = getHomeScreen();
+        SwipeScreen swipe = home.tapSwipe();
+
+        swipe.swipeRight();
+
+        Assert.assertTrue(swipe.firstSwipeVerifications(), "Old card is not hidden (first swipe)");
+
+        swipe.swipeAllTheWayToTheRight();
+
+        Assert.assertTrue(swipe.secondSwipeVerifications(), "Verification failed after swiping all the way to the right (second swipe)");
+
+        swipe.swipeDown();
+
+        Assert.assertTrue(swipe.verticalSwipeVerifications(), "You found me text was not found after scrolling down");
 
     }
 

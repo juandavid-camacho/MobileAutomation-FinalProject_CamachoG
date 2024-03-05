@@ -3,6 +3,7 @@ package com.example.utils.tests;
 import com.example.screens.HomeScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
@@ -29,6 +30,13 @@ public class BaseTest {
         } catch(MalformedURLException exception){
             System.out.println(exception.getMessage());
         }
+
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod(){
+
+        driver.quit();
 
     }
 
