@@ -11,6 +11,8 @@ import java.util.Scanner;
 
 public class CredentialList {
 
+    // This class was created to handle credentialList and registeredCredential files in order for test#2 & #3 to run correctly
+
     private static ArrayList<String> emails = new ArrayList<String>();
     private static ArrayList<String> passwords = new ArrayList<String>();
 
@@ -42,8 +44,8 @@ public class CredentialList {
     public static void readRegisteredCredentials(){
 
         try{
-            File credentialList = new File("C:\\Users\\juandavid.camacho\\Documents\\Curso_TAE\\Mobile\\MobileAutomationProject-JuanDavidCamachoG\\src\\test\\resources\\registeredCredentials.txt");
-            Scanner reader = new Scanner(credentialList);
+            File registeredCredentialList = new File("C:\\Users\\juandavid.camacho\\Documents\\Curso_TAE\\Mobile\\MobileAutomationProject-JuanDavidCamachoG\\src\\test\\resources\\registeredCredentials.txt");
+            Scanner reader = new Scanner(registeredCredentialList);
 
             while (reader.hasNextLine()){
 
@@ -61,6 +63,7 @@ public class CredentialList {
 
     }
 
+    // this method returns a random array of credentials to register from the credentialList that has 100 of them
     public static String[] getRandomCredentials(){
         double randomNumber = Math.random()*(100-1);
         int randomId = (int)randomNumber;
@@ -72,6 +75,7 @@ public class CredentialList {
         return AvailableEmail;
     }
 
+    // this methods writes on registeredCredentials, the set of credentials that were already registered
     public static void writeRegisteredCredentials(String email, String password){
 
         try{
@@ -85,6 +89,8 @@ public class CredentialList {
 
     }
 
+
+    // this method returns a random array of credentials already registered, which are stored on registeredCredentials
     public static String[] getRegisteredCredentials(){
 
         double randomNumber = Math.random()*(registeredEmails.size()-1);
